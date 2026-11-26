@@ -738,6 +738,11 @@ document.addEventListener('keydown', ev => {
   else if (document.querySelector('.fine .tasto')) { ev.preventDefault(); document.querySelector('.fine .tasto').click(); }
 });
 mostra('percorso');
+// il pesciolino si rimette al suo posto quando la pagina finisce di caricarsi o cambia misura (prova online, 27 novembre)
+let attesaMisura;
+const riposiziona = () => { clearTimeout(attesaMisura); attesaMisura = setTimeout(() => { if (!L && schedaAttiva === 'percorso' && !document.querySelector('.velo')) mostra('percorso'); }, 250); };
+window.addEventListener('load', riposiziona);
+window.addEventListener('resize', riposiziona);
 </script>
 </body>
 </html>
